@@ -1,5 +1,5 @@
-import { ShareIcon } from "@heroicons/react/outline";
-import { ArrowRightIcon, MailOpenIcon } from "@heroicons/react/solid";
+import { ArrowRightIcon, EnvelopeIcon } from "@heroicons/react/20/solid";
+import { ShareIcon } from "@heroicons/react/24/outline";
 import PetCardFlex, {
   PawHubContainer,
 } from "components/layout/Grid/PetCardFlex";
@@ -17,7 +17,7 @@ import { lookUpPet } from "../../routes/API";
 import { fetcher } from "../../utils/petInfoFetcher";
 import { nameCleaner } from "../../utils/utilsCleaner/index";
 import FavoriteSection from "./Favorites/FavoriteSection";
-import Placeholder from "./placeholder.jpg";
+import Placeholder from "./placeholder-light.png";
 
 export default function PetInfo() {
   const { id } = useParams<string>();
@@ -162,7 +162,7 @@ export default function PetInfo() {
           className="btn btn-info w-60 my-2"
           href={`mailto:${pet.contact.email}`}
         >
-          Contact <MailOpenIcon className="ml-1 w-4 h-4 " />
+          Contact <EnvelopeIcon className="ml-1 w-4 h-4 " />
         </a>
 
         <Button onClick={handleShare} className="w-60 my-2" color="primary">

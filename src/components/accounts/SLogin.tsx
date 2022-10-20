@@ -43,7 +43,7 @@ const SLogin = () => {
                       bordered
                       type="email"
                       color="primary"
-                      className=" max-w-xs"
+                      className=" flex min-w-[10px] "
                       {...register("email", {
                         required: true,
                         maxLength: 45,
@@ -55,7 +55,7 @@ const SLogin = () => {
             </Form>
 
             <Form className="w-full p-4">
-              <Form.Label title="Password">
+              <Form.Label title="Password &ensp;">
                 <Controller
                   name="password"
                   control={control}
@@ -67,7 +67,7 @@ const SLogin = () => {
                       bordered
                       color="primary"
                       type="password"
-                      className=" max-w-xs"
+                      className=" flex min-w-[10px] max-w-xs"
                       {...register("password", { required: true })}
                     />
                   )}
@@ -76,11 +76,7 @@ const SLogin = () => {
             </Form>
 
             <FetchingButton fetching={fetching} action="Submit" />
-            {error && (
-              <small className="text-error" test-id="formErrorMessage">
-                {error.message}
-              </small>
-            )}
+            {error && <small className="text-error">{error.message}</small>}
           </form>
         </div>
       </section>

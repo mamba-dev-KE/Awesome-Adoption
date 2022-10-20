@@ -43,7 +43,7 @@ const Register = () => {
                         bordered
                         type="email"
                         color="primary"
-                        className=" max-w-xs"
+                        className=" flex min-w-[10px] "
                         {...register("email", {
                           required: true,
                           maxLength: 45,
@@ -67,7 +67,7 @@ const Register = () => {
                         bordered
                         color="primary"
                         type="password"
-                        className=" max-w-xs"
+                        className=" flex min-w-[10px]"
                         {...register("password", { required: true })}
                       />
                     )}
@@ -76,11 +76,7 @@ const Register = () => {
               </Form>
 
               <FetchingButton fetching={fetching} action="Submit" />
-              {error && (
-                <small className="text-error" test-id="formErrorMessage">
-                  {error.message}
-                </small>
-              )}
+              {error && <small className="text-error">{error.message}</small>}
             </form>
           </div>
         </section>

@@ -1,11 +1,12 @@
-import { MenuAlt2Icon } from "@heroicons/react/outline";
-import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
+import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 import { useAuth } from "context/SupaContext";
 import React from "react";
 import { Avatar, Button, Dropdown, Menu, Navbar } from "react-daisyui";
 import { Link, NavLink } from "react-router-dom";
 import { useSignOut } from "react-supabase";
 
+import ThemeToggle from "../themeToggle/themeToggle";
 import PawLogo from "./PawLogo.png";
 
 const petList = ["Dog", "Cat", "Rabbit", "Horse", "Bird"];
@@ -19,9 +20,9 @@ export default function NavigationBar() {
         <Navbar.Start>
           <Dropdown>
             <Button color="ghost" tabIndex={0} className="lg:hidden">
-              <MenuAlt2Icon className="w-5 h-5" />
+              <Bars3BottomLeftIcon className="w-5 h-5" />
             </Button>
-            <Dropdown.Menu className="w-52 menu-compact mt-3 ">
+            <Dropdown.Menu className="w-52 menu-compact mt-3 lg:hidden">
               <DropdownNavLink route="/">Home</DropdownNavLink>
               <li tabIndex={0}>
                 <a className="justify-between">
@@ -36,6 +37,10 @@ export default function NavigationBar() {
                   <DropdownNavLink route="pets">All Pets</DropdownNavLink>
                 </ul>
               </li>
+              <MenuItemNavLink name="About" route="about" />
+              <MenuItemNavLink name="Resources" route="resources" />
+              <MenuItemNavLink name="Organizations" route="organizations" />
+              <MenuItemNavLink name="Contact" route="contact" />
             </Dropdown.Menu>
           </Dropdown>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
@@ -45,7 +50,7 @@ export default function NavigationBar() {
         <Navbar.Center className="hidden lg:flex justify-center">
           <Menu horizontal className="p-0 ">
             <MenuItemNavLink name="Home" route="/" />
-            <Menu.Item tabIndex={0}>
+            <Menu.Item tabIndex={0} className="mx-1">
               <a>
                 Pets <ChevronDownIcon className="w-4" />
               </a>
@@ -67,6 +72,7 @@ export default function NavigationBar() {
           </Menu>
         </Navbar.Center>
         <Navbar.End>
+          <ThemeToggle />
           <Dropdown vertical="end">
             <Avatar
               src={PawLogo}
@@ -110,7 +116,9 @@ const DropdownNavLink = ({
   route: string;
 }) => (
   <li>
-    <NavLink to={route}>{children}</NavLink>
+    <NavLink end to={route}>
+      {children}
+    </NavLink>
   </li>
 );
 
